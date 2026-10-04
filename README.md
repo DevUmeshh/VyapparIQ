@@ -13,7 +13,7 @@ The product is designed for kirana stores, local retailers, home businesses, ven
 - CSV validation with safe cleaning, duplicate detection, and a 10 MB upload limit.
 - Revenue, transactions, average bill, category share, weekday, date, and trend analysis.
 - Category and daily revenue charts with a restrained business dashboard UI.
-- OpenRouter integration through the OpenAI Python SDK with configurable model, timeout, retries, and fallback model.
+- OpenRouter integration through direct HTTP requests with configurable model (`google/gemma-4-26b-a4b-it:free`), timeout, retries, and reasoning enabled.
 - Structured Pydantic AI responses requiring exactly three recommendations.
 - Local rule-based recommendations when the API is unavailable.
 - English, Hinglish, Hindi, and Marathi insight language selection.
@@ -40,7 +40,7 @@ The LLM receives aggregate metrics such as revenue, transaction count, top categ
 
 ## Tech Stack
 
-Python 3.11+, Streamlit, Pandas, NumPy, Plotly, OpenAI Python SDK, Pydantic, python-dotenv, ReportLab, and pytest. The project is open source and uses an open-weight Gemma model through the OpenAI-compatible OpenRouter API; OpenRouter itself is not claimed to be open source.
+Python 3.11+, Streamlit, Pandas, NumPy, Plotly, Requests, Pydantic, python-dotenv, ReportLab, and pytest. The project is open source and uses an open-weight Gemma model through the OpenRouter API; OpenRouter itself is not claimed to be open source.
 
 ## Project Structure
 

@@ -32,16 +32,24 @@ signal to an action: what is happening, why it matters, and what to try. Return 
 """
 
 
-def get_openrouter_client(api_key: str | None = None) -> Any:
-    """Create an OpenAI-compatible client only when a key is available."""
-    from openai import OpenAI
-
+def get_api_key(api_key: str | None = None) -> str:
     key = (api_key or config.get_api_key()).strip()
     if not key:
         raise ValueError("An OpenRouter API key is required for AI insights.")
-    headers = {"HTTP-Referer": config.SITE_URL, "X-Title": config.SITE_NAME}
-    headers = {key: value for key, value in headers.items() if value}
-    return OpenAI(base_url=config.API_BASE_URL, api_key=key, default_headers=headers or None, timeout=config.REQUEST_TIMEOUT_SECONDS)
+    return key
+
+
+def get_headers(api_key: str | None = None) -> dict[str, str]:
+    key = get_api_key(api_key)
+    headers = {
+        "Authorization": f"Bearer {key}",
+        "Content-Type": "application/json",
+    }
+    if config.SITE_URL:
+        headers["HTTP-Referer"] = config.SITE_URL
+    if config.SITE_NAME:
+        headers["X-Title"] = config.SITE_NAME
+    return headers
 
 
 def build_ai_prompt(summary: dict[str, Any], language: str = "English") -> str:
@@ -74,30 +82,51 @@ def validate_ai_response(content: str | dict[str, Any]) -> AIInsightResponse:
 
 
 def request_ai_insights(summary: dict[str, Any], language: str = "English", api_key: str | None = None) -> AIInsightResponse:
-    client = get_openrouter_client(api_key)
+    import requests
+
+    headers = get_headers(api_key)
+    url = f"{config.API_BASE_URL.rstrip('/')}/chat/completions"
     last_error: Exception | None = None
     models = [config.MODEL] + ([config.FALLBACK_MODEL] if config.FALLBACK_MODEL and config.FALLBACK_MODEL != config.MODEL else [])
+
     for model in models:
         for attempt in range(config.RETRY_COUNT + 1):
             try:
-                messages = [
-                    {"role": "system", "content": SYSTEM_PROMPT},
-                    {"role": "user", "content": build_ai_prompt(summary, language)},
-                ]
-                try:
-                    response = client.chat.completions.create(
-                        model=model,
-                        messages=messages,
-                        response_format={"type": "json_object"},
-                        temperature=0.2,
-                    )
-                except Exception as structured_error:
-                    # A few OpenRouter models do not advertise JSON mode. The prompt
-                    # still requires JSON, which is validated before display.
-                    if "response_format" not in str(structured_error).lower() and "json" not in str(structured_error).lower():
-                        raise
-                    response = client.chat.completions.create(model=model, messages=messages, temperature=0.2)
-                content = response.choices[0].message.content or ""
+                payload = {
+                    "model": model,
+                    "messages": [
+                        {"role": "system", "content": SYSTEM_PROMPT},
+                        {"role": "user", "content": build_ai_prompt(summary, language)},
+                    ],
+                    "temperature": 0.2,
+                    "reasoning": {"enabled": True},
+                }
+
+                response = requests.post(
+                    url=url,
+                    headers=headers,
+                    json=payload,
+                    timeout=config.REQUEST_TIMEOUT_SECONDS,
+                )
+
+                if response.status_code == 401:
+                    raise ValueError("The OpenRouter key could not be authenticated. Check your API key.")
+                if response.status_code == 429:
+                    raise RuntimeError("OpenRouter rate limits are active. Please try again shortly.")
+
+                if response.status_code != 200:
+                    try:
+                        err_msg = response.json().get("error", {}).get("message", response.text)
+                    except Exception:
+                        err_msg = response.text
+                    raise RuntimeError(f"OpenRouter API error ({response.status_code}): {err_msg}")
+
+                data = response.json()
+                choices = data.get("choices", [])
+                if not choices:
+                    raise ValueError("No choices returned from OpenRouter.")
+
+                content = choices[0].get("message", {}).get("content") or ""
                 return validate_ai_response(content)
             except Exception as exc:
                 last_error = exc
@@ -107,13 +136,38 @@ def request_ai_insights(summary: dict[str, Any], language: str = "English", api_
 
 
 def ask_followup_question(question: str, summary: dict[str, Any], language: str = "English", api_key: str | None = None) -> str:
-    client = get_openrouter_client(api_key)
-    response = client.chat.completions.create(
-        model=config.MODEL,
-        messages=[
+    import requests
+
+    headers = get_headers(api_key)
+    url = f"{config.API_BASE_URL.rstrip('/')}/chat/completions"
+    payload = {
+        "model": config.MODEL,
+        "messages": [
             {"role": "system", "content": SYSTEM_PROMPT + " Answer the user's question using only the summary. If it is not answerable, say you do not have enough information in this sales data to answer reliably."},
             {"role": "user", "content": build_ai_prompt(summary, language) + f"\nQuestion: {question[:500]}"},
         ],
-        temperature=0.2,
+        "temperature": 0.2,
+        "reasoning": {"enabled": True},
+    }
+
+    response = requests.post(
+        url=url,
+        headers=headers,
+        json=payload,
+        timeout=config.REQUEST_TIMEOUT_SECONDS,
     )
-    return (response.choices[0].message.content or "I don't have enough information in this sales data to answer that reliably.").strip()
+
+    if response.status_code != 200:
+        try:
+            err_msg = response.json().get("error", {}).get("message", response.text)
+        except Exception:
+            err_msg = response.text
+        raise RuntimeError(f"OpenRouter API error ({response.status_code}): {err_msg}")
+
+    data = response.json()
+    choices = data.get("choices", [])
+    if not choices:
+        return "I don't have enough information in this sales data to answer that reliably."
+
+    content = choices[0].get("message", {}).get("content") or ""
+    return (content or "I don't have enough information in this sales data to answer that reliably.").strip()
