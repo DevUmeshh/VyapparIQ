@@ -1,0 +1,181 @@
+Date,Item_Name,Category,Amount_INR
+2026-09-01,Rice 5kg,Grocery,520
+2026-09-01,Milk,Dairy,180
+2026-09-01,Biscuits,Snacks,120
+2026-09-01,Tea,Beverages,150
+2026-09-01,Detergent,Household,240
+2026-09-01,Soap,Personal Care,130
+2026-09-02,Rice 5kg,Grocery,560
+2026-09-02,Milk,Dairy,160
+2026-09-02,Biscuits,Snacks,95
+2026-09-02,Tea,Beverages,130
+2026-09-02,Detergent,Household,210
+2026-09-02,Soap,Personal Care,110
+2026-09-03,Rice 5kg,Grocery,620
+2026-09-03,Milk,Dairy,190
+2026-09-03,Biscuits,Snacks,135
+2026-09-03,Tea,Beverages,170
+2026-09-03,Detergent,Household,260
+2026-09-03,Soap,Personal Care,140
+2026-09-04,Rice 5kg,Grocery,700
+2026-09-04,Milk,Dairy,220
+2026-09-04,Biscuits,Snacks,160
+2026-09-04,Tea,Beverages,190
+2026-09-04,Detergent,Household,280
+2026-09-04,Soap,Personal Care,155
+2026-09-05,Rice 5kg,Grocery,820
+2026-09-05,Milk,Dairy,260
+2026-09-05,Biscuits,Snacks,210
+2026-09-05,Tea,Beverages,230
+2026-09-05,Detergent,Household,320
+2026-09-05,Soap,Personal Care,180
+2026-09-06,Rice 5kg,Grocery,920
+2026-09-06,Milk,Dairy,300
+2026-09-06,Biscuits,Snacks,240
+2026-09-06,Tea,Beverages,270
+2026-09-06,Detergent,Household,350
+2026-09-06,Soap,Personal Care,200
+2026-09-07,Rice 5kg,Grocery,1020
+2026-09-07,Milk,Dairy,330
+2026-09-07,Biscuits,Snacks,260
+2026-09-07,Tea,Beverages,300
+2026-09-07,Detergent,Household,380
+2026-09-07,Soap,Personal Care,220
+2026-09-08,Rice 5kg,Grocery,510
+2026-09-08,Milk,Dairy,170
+2026-09-08,Biscuits,Snacks,105
+2026-09-08,Tea,Beverages,140
+2026-09-08,Detergent,Household,220
+2026-09-08,Soap,Personal Care,120
+2026-09-09,Rice 5kg,Grocery,540
+2026-09-09,Milk,Dairy,180
+2026-09-09,Biscuits,Snacks,110
+2026-09-09,Tea,Beverages,145
+2026-09-09,Detergent,Household,225
+2026-09-09,Soap,Personal Care,125
+2026-09-10,Rice 5kg,Grocery,590
+2026-09-10,Milk,Dairy,195
+2026-09-10,Biscuits,Snacks,125
+2026-09-10,Tea,Beverages,160
+2026-09-10,Detergent,Household,240
+2026-09-10,Soap,Personal Care,135
+2026-09-11,Rice 5kg,Grocery,730
+2026-09-11,Milk,Dairy,230
+2026-09-11,Biscuits,Snacks,180
+2026-09-11,Tea,Beverages,200
+2026-09-11,Detergent,Household,290
+2026-09-11,Soap,Personal Care,160
+2026-09-12,Rice 5kg,Grocery,850
+2026-09-12,Milk,Dairy,275
+2026-09-12,Biscuits,Snacks,220
+2026-09-12,Tea,Beverages,245
+2026-09-12,Detergent,Household,330
+2026-09-12,Soap,Personal Care,185
+2026-09-13,Rice 5kg,Grocery,960
+2026-09-13,Milk,Dairy,315
+2026-09-13,Biscuits,Snacks,250
+2026-09-13,Tea,Beverages,280
+2026-09-13,Detergent,Household,365
+2026-09-13,Soap,Personal Care,205
+2026-09-14,Rice 5kg,Grocery,1060
+2026-09-14,Milk,Dairy,350
+2026-09-14,Biscuits,Snacks,275
+2026-09-14,Tea,Beverages,315
+2026-09-14,Detergent,Household,400
+2026-09-14,Soap,Personal Care,230
+2026-09-15,Rice 5kg,Grocery,540
+2026-09-15,Milk,Dairy,175
+2026-09-15,Biscuits,Snacks,115
+2026-09-15,Tea,Beverages,150
+2026-09-15,Detergent,Household,215
+2026-09-15,Soap,Personal Care,125
+2026-09-16,Rice 5kg,Grocery,570
+2026-09-16,Milk,Dairy,185
+2026-09-16,Biscuits,Snacks,120
+2026-09-16,Tea,Beverages,155
+2026-09-16,Detergent,Household,225
+2026-09-16,Soap,Personal Care,130
+2026-09-17,Rice 5kg,Grocery,610
+2026-09-17,Milk,Dairy,200
+2026-09-17,Biscuits,Snacks,130
+2026-09-17,Tea,Beverages,170
+2026-09-17,Detergent,Household,245
+2026-09-17,Soap,Personal Care,140
+2026-09-18,Rice 5kg,Grocery,750
+2026-09-18,Milk,Dairy,240
+2026-09-18,Biscuits,Snacks,190
+2026-09-18,Tea,Beverages,210
+2026-09-18,Detergent,Household,300
+2026-09-18,Soap,Personal Care,165
+2026-09-19,Rice 5kg,Grocery,880
+2026-09-19,Milk,Dairy,285
+2026-09-19,Biscuits,Snacks,225
+2026-09-19,Tea,Beverages,250
+2026-09-19,Detergent,Household,340
+2026-09-19,Soap,Personal Care,190
+2026-09-20,Rice 5kg,Grocery,990
+2026-09-20,Milk,Dairy,325
+2026-09-20,Biscuits,Snacks,255
+2026-09-20,Tea,Beverages,290
+2026-09-20,Detergent,Household,375
+2026-09-20,Soap,Personal Care,215
+2026-09-21,Rice 5kg,Grocery,1080
+2026-09-21,Milk,Dairy,360
+2026-09-21,Biscuits,Snacks,280
+2026-09-21,Tea,Beverages,320
+2026-09-21,Detergent,Household,410
+2026-09-21,Soap,Personal Care,235
+2026-09-22,Rice 5kg,Grocery,570
+2026-09-22,Milk,Dairy,185
+2026-09-22,Biscuits,Snacks,120
+2026-09-22,Tea,Beverages,155
+2026-09-22,Detergent,Household,225
+2026-09-22,Soap,Personal Care,130
+2026-09-23,Rice 5kg,Grocery,600
+2026-09-23,Milk,Dairy,195
+2026-09-23,Biscuits,Snacks,125
+2026-09-23,Tea,Beverages,165
+2026-09-23,Detergent,Household,235
+2026-09-23,Soap,Personal Care,135
+2026-09-24,Rice 5kg,Grocery,640
+2026-09-24,Milk,Dairy,210
+2026-09-24,Biscuits,Snacks,140
+2026-09-24,Tea,Beverages,180
+2026-09-24,Detergent,Household,255
+2026-09-24,Soap,Personal Care,145
+2026-09-25,Rice 5kg,Grocery,780
+2026-09-25,Milk,Dairy,250
+2026-09-25,Biscuits,Snacks,200
+2026-09-25,Tea,Beverages,220
+2026-09-25,Detergent,Household,310
+2026-09-25,Soap,Personal Care,175
+2026-09-26,Rice 5kg,Grocery,910
+2026-09-26,Milk,Dairy,295
+2026-09-26,Biscuits,Snacks,235
+2026-09-26,Tea,Beverages,260
+2026-09-26,Detergent,Household,350
+2026-09-26,Soap,Personal Care,195
+2026-09-27,Rice 5kg,Grocery,1010
+2026-09-27,Milk,Dairy,335
+2026-09-27,Biscuits,Snacks,265
+2026-09-27,Tea,Beverages,300
+2026-09-27,Detergent,Household,385
+2026-09-27,Soap,Personal Care,220
+2026-09-28,Rice 5kg,Grocery,1110
+2026-09-28,Milk,Dairy,370
+2026-09-28,Biscuits,Snacks,295
+2026-09-28,Tea,Beverages,330
+2026-09-28,Detergent,Household,420
+2026-09-28,Soap,Personal Care,245
+2026-09-29,Rice 5kg,Grocery,600
+2026-09-29,Milk,Dairy,190
+2026-09-29,Biscuits,Snacks,125
+2026-09-29,Tea,Beverages,160
+2026-09-29,Detergent,Household,230
+2026-09-29,Soap,Personal Care,135
+2026-09-30,Rice 5kg,Grocery,650
+2026-09-30,Milk,Dairy,210
+2026-09-30,Biscuits,Snacks,140
+2026-09-30,Tea,Beverages,180
+2026-09-30,Detergent,Household,250
+2026-09-30,Soap,Personal Care,145
